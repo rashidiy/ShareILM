@@ -2392,10 +2392,28 @@ footer#footer {
     z-index: 9;
     transition: 0.3s ease-out;
 }
+.add-to-cart svg {
+    width: 25px;
+}
 
 .product-style:hover button.add-to-cart {
     bottom: 380px;
     bottom: 0;
+}
+.product-style:hover button.edit {
+    bottom: 380px;
+    bottom: 64px;
+}
+.add-to-cart.edit {
+    background-color: lawngreen !important;
+    opacity: 0.7;
+    color: black !important;
+    font-weight: bold;
+}.add-to-cart.delete {
+    background-color: orangered !important;
+    opacity: 0.7;
+    color: white !important;
+    font-weight: bold;
 }
 
 .product-item figcaption {
