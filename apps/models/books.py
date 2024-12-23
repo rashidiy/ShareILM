@@ -11,7 +11,6 @@ from .authors import Author
 from .categories import Category
 
 
-
 class Book(BaseModel):
     class Availability(models.TextChoices):
         in_stock = 'In stock', 'In stock'
@@ -36,7 +35,7 @@ class Book(BaseModel):
     book_pdf = models.FileField(upload_to='books_pdf/',
                                 validators=[validate_file_type], null=True, blank=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='books')
-    average_rating = models.DecimalField(max_digits=3, decimal_places=1, default=0)
+    average_rating = models.DecimalField(max_digits=3, decimal_places=1, default=0) # todo chagne
     language = models.CharField(max_length=250, null=True, blank=True)
     pages = models.PositiveIntegerField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
@@ -56,6 +55,8 @@ class Book(BaseModel):
     def __str__(self):
         return self.title
 
+    class Meta:
+        ordering = ['-pk']
 
 
 class Review(models.Model):
@@ -64,5 +65,6 @@ class Review(models.Model):
     text = models.TextField()
     rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+
     def __str__(self):
         return f"{self.user}-{self.book}"
