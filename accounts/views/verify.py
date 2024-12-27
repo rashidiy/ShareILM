@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.views import View
@@ -20,5 +21,7 @@ class VerifyEmailFormView(LoginRequiredMixin, TemplateView):
         if RedisDataStore.get_data(f'ev:{request.user.email}') == code:
             request.user.is_email_verified = True
             request.user.save()
-        return redirect('home')
-        
+            return redirect('home')
+        else:
+            messages.error(request, "Invalid verification code. Please try again.")
+        return self.render_to_response(self.get_context_data())

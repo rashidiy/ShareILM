@@ -75,6 +75,13 @@
         <div class="v-box">
             <h1>Verify Your Email</h1>
             <p>Please enter the 6-digit code we sent to your email {{ user.email }}.</p>
+            {% if messages %}
+                <ul class="messages" style="color: red; font-weight: bold;">
+                    {% for message in messages %}
+                        <li class="{{ message.tags }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
             <form method="post" id="verification-form">
                 {% csrf_token %}
                 <div class="code-inputs">
