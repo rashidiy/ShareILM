@@ -1,0 +1,59 @@
+{% extends 'booksaw/base.html' %}
+{% load static %}
+{% block extra_style %}
+    <style>
+        input, button {
+            border-radius: 15px !important;
+            height: 50px !important;
+            width: 400px !important;
+            padding-left: 20px !important;
+
+        }
+
+        img {
+            width: 150%;
+            border-radius: 15px;
+        }
+
+        p {
+            margin: 0 0 0 0;
+        }
+
+        .forget-pass {
+            margin: -26px 0 3px 260px
+        }
+
+        form {
+            margin-left: 100px;
+        }
+
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row m-5">
+            <div class="col-md-6">
+                <img src="{% static 'assets/images/post-img2.jpg' %}" alt="login image" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+                <form method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="row">
+                            <p>
+                                {{ field.label_tag }}
+                                {{ field }}
+                                {{ field.errors }}
+                                {% if field.help_text %}
+                                    <small class="helptext">{{ field.help_text }}</small>
+                                {% endif %}
+                            </p>
+                        </div>
+                    {% endfor %}
+                    <button class="btn btn-outline-primary" type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

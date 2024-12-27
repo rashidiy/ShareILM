@@ -1,13 +1,13 @@
 from decimal import Decimal
 
-from django.contrib.auth.models import User
 from django.core.validators import FileExtensionValidator, MinValueValidator, MaxValueValidator
 from django.db import models
 from django_resized import ResizedImageField
 from apps.utils.validators import validate_file_type
 
-from .base import BaseModel
+from accounts.models import User
 from .authors import Author
+from .base import BaseModel
 from .categories import Category
 
 
@@ -35,7 +35,7 @@ class Book(BaseModel):
     book_pdf = models.FileField(upload_to='books_pdf/',
                                 validators=[validate_file_type], null=True, blank=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='books')
-    average_rating = models.DecimalField(max_digits=3, decimal_places=1, default=0) # todo chagne
+    average_rating = models.DecimalField(max_digits=3, decimal_places=1, default=0)  # todo chagne
     language = models.CharField(max_length=250, null=True, blank=True)
     pages = models.PositiveIntegerField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)

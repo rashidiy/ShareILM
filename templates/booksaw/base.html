@@ -21,7 +21,9 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'assets/icomoon/icomoon.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/vendor.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'assets/style.css' %}">
+    {% block extra_style %}
 
+    {% endblock %}
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#header" tabindex="0">
@@ -51,8 +53,14 @@
 					</div>
 					<div class="col-md-6">
 						<div class="right-element">
-							<a href="#" class="user-account for-buy"><i
-									class="icon icon-user"></i><span>Account</span></a>
+                            {% if user.is_anonymous %}
+                                <a href="{% url 'accounts:login' %}" class="user-account for-buy"><i
+                                        class="icon icon-user"></i><span>Log In</span></a>
+                            {% else %}
+                                <a href="#" class="user-account for-buy"><i
+                                        class="icon icon-user"></i><span>  {{ user.email }}</span></a>
+                            {% endif %}
+
 							<a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0
 									$)</span></a>
 
@@ -75,8 +83,8 @@
 				</div>
 			</div>
 		</div><!--top-content-->
-
-		<header id="header">
+        {% block header %}
+        <header id="header">
 			<div class="container-fluid">
 				<div class="row">
 
@@ -131,6 +139,8 @@
 				</div>
 			</div>
 		</header>
+
+        {% endblock %}
 
 	</div><!--header-wrap-->
 

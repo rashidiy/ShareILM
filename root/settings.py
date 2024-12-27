@@ -24,10 +24,11 @@ SECRET_KEY = 'django-insecure-%y3tu7wz$*9kbhx&7j6)(j170n%ee+s9^xm*k*2w*&ti#yn(%u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+AUTH_USER_MODEL = 'accounts.User'
 
 LOGIN_URL = '/admin/login/'
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'accounts.apps.AccountsConfig',
     'apps.apps.AppsConfig',
 ]
 
@@ -123,3 +125,11 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'bubbless7456@gmail.com'
+EMAIL_HOST_PASSWORD = 'ndvp ttcd xdet vjox'

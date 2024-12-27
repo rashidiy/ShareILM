@@ -1,9 +1,9 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
 from django.core.paginator import Paginator
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, ListView, CreateView, DeleteView
+from django.views.generic import ListView, CreateView, DeleteView
 
+from accounts.mixins import LoginAndVerificationRequiredMixin
 from apps.forms import BookForm
 from apps.models import Book, Category
 
@@ -18,7 +18,7 @@ class AllBooksListView(ListView):
     }
 
 
-class BookCreateView(LoginRequiredMixin, CreateView):
+class BookCreateView(LoginAndVerificationRequiredMixin, CreateView):
     model = Book
     form_class = BookForm
     template_name = 'booksaw/book_create.html'
@@ -33,14 +33,14 @@ class BookCreateView(LoginRequiredMixin, CreateView):
             return self.form_invalid(form)
 
 
-class MyBooksListView(LoginRequiredMixin, ListView):
+class MyBooksListView(LoginAndVerificationRequiredMixin, ListView):
     template_name = 'booksaw/my_books.html'
 
     def get_queryset(self):
         return self.request.user.books.all()
 
 
-class BookDeleteView(LoginRequiredMixin, DeleteView):
+class BookDeleteView(LoginAndVerificationRequiredMixin, DeleteView):
     model = Book
     success_url = reverse_lazy('apps:my_books')
     template_name = 'booksaw/confirm_book_delete.html'
