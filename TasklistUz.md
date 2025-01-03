@@ -5,16 +5,16 @@
 <details>
 <summary>1.Loyihani sozlash</summary>
 
-- [ ] 1.ShareILM repozitoriyasini fork qilib, lokalga yuklab oling.
-- [ ] 2.Virtual muhitni `venv` yoki `pipenv` yordamida sozlang.
-- [ ] 3.`requirements.txt` faylida keltirilgan barcha bog'liqliklarni o'rnating.
-- [ ] 4.`.env` faylini yarating va ma'lumotlar bazasi sozlamalarini konfiguratsiya qiling.
-- [ ] 5.Dastlabki migratsiyalarni ishga tushiring va ma'lumotlar bazasi ulanishini tekshiring.
-- [ ] 6.`python manage.py runserver` buyrug'i yordamida serverni ishga tushiring.
-- [ ] 7.README faylida "Lokal sozlash" bo'limini qo'shib, sozlash jarayonini hujjatlashtiring.
-- [ ] 8.`django-environ` kutubxonasidan foydalangan holda xavfsiz muhit sozlamalarini boshqaring.
-- [ ] 9.Superuser yarating va administrator sifatida tizimga kiring.
-- [ ] 10.Statik va media fayllar uchun lokal sozlamalarni konfiguratsiya qiling.
+- [x] 1.ShareILM repozitoriyasini fork qilib, lokalga yuklab oling.
+- [x] 2.Virtual muhitni `venv` yoki `pipenv` yordamida sozlang.
+- [x] 3.`requirements.txt` faylida keltirilgan barcha bog'liqliklarni o'rnating.
+- [x] 4.`.env` faylini yarating va ma'lumotlar bazasi sozlamalarini konfiguratsiya qiling.
+- [x] 5.Dastlabki migratsiyalarni ishga tushiring va ma'lumotlar bazasi ulanishini tekshiring.
+- [x] 6.`python manage.py runserver` buyrug'i yordamida serverni ishga tushiring.
+- [x] 7.README faylida "Lokal sozlash" bo'limini qo'shib, sozlash jarayonini hujjatlashtiring.
+- [x] 8.`django-environ` kutubxonasidan foydalangan holda xavfsiz muhit sozlamalarini boshqaring.
+- [x] 9.Superuser yarating va administrator sifatida tizimga kiring.
+- [x] 10.Statik va media fayllar uchun lokal sozlamalarni konfiguratsiya qiling.
 
 </details>
 
