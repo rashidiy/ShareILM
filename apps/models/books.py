@@ -25,7 +25,7 @@ class Book(BaseModel):
 
     title = models.CharField(max_length=250)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.DecimalField(max_digits=10, decimal_places=0)
     category = models.ManyToManyField(Category, related_name='categories', blank=True)
     availability = models.CharField(max_length=250, choices=Availability.choices)
     format = models.CharField(max_length=250, choices=Format.choices)

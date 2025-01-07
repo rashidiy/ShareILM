@@ -1,0 +1,109 @@
+{% extends 'booksaw/base.html' %}
+
+{% block content %}
+    <h2 class="search-title">Search Results for "{{ query }}"</h2>
+    <div class="search-results">
+        {% if books %}
+            <ul class="book-list">
+                {% for book in books %}
+                    <li class="book-item">
+                        <div class="book-info">
+                            <div class="book-title">
+                                <strong>{{ book.title }}</strong>
+                            </div>
+                            <div class="book-author">
+                                <em>{{ book.author }}</em>
+                            </div>
+                            <div class="book-image">
+                                <img src="{{ book.book_image.url }}" alt="{{ book.title }} image">
+                            </div>
+                            <div class="book-details">
+                                <p><strong>Rating:</strong> {{ book.average_rating }}</p>
+                                <p><strong>Publisher:</strong> {{ book.publisher }}</p>
+                                <p><strong>Price:</strong> {{ book.price }} ming sum</p>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No results found.</p>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block style %}
+    <style>
+        .search-title {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .search-results {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .book-list {
+            list-style: none;
+            padding: 0;
+            width: 80%;
+            margin: 0;
+        }
+
+        .book-item {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .book-info {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .book-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .book-author {
+            font-size: 1.2rem;
+            margin: 5px 0;
+        }
+
+        .book-image {
+            max-width: 120px;
+            max-height: 180px;
+            margin: 10px 0;
+        }
+
+        .book-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .book-details {
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        .book-details p {
+            margin: 5px 0;
+        }
+
+        .book-details strong {
+            font-weight: bold;
+        }
+    </style>
+{% endblock %}

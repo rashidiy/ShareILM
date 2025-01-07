@@ -8,4 +8,5 @@ urlpatterns = [
     path('register/', RegisterFormView.as_view(), name='register'),
     path('verification/', VerifyEmailFormView.as_view(), name='email_verification'),
     path('logout/', mixins.custom_logout, name='logout'),
+    path('search/', mixins.search_results, name='search_results'),
 ]

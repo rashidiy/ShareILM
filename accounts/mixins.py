@@ -1,6 +1,7 @@
 from django.contrib.auth import mixins
-from django.shortcuts import redirect
+from django.shortcuts import redirect,render
 from django.contrib.auth import logout
+from apps.models.books import Book
 
 from accounts.utils.email_verification import RedisDataStore
 
@@ -19,3 +20,9 @@ class LoginAndVerificationRequiredMixin(mixins.LoginRequiredMixin):
 def custom_logout(request):
     logout(request)
     return redirect('home')
+
+
+def search_results(request):
+    query = request.GET.get('q', '')
+    books = Book.objects.filter(title__icontains=query)  # Yoki boshqa xususiyatlar
+    return render(request, 'booksaw/search_results.html', {'books': books, 'query': query})
