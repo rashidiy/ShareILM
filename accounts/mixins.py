@@ -1,5 +1,6 @@
 from django.contrib.auth import mixins
 from django.shortcuts import redirect
+from django.contrib.auth import logout
 
 from accounts.utils.email_verification import RedisDataStore
 
@@ -13,3 +14,8 @@ class LoginAndVerificationRequiredMixin(mixins.LoginRequiredMixin):
                 RedisDataStore.send_verification_code(request.user.email)
             return redirect('accounts:email_verification')
         return super().dispatch(request, *args, **kwargs)
+
+
+def custom_logout(request):
+    logout(request)
+    return redirect('home')
