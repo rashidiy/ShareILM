@@ -1,6 +1,6 @@
 from django import forms
-
-from apps.models import Book
+from django.forms import ModelForm
+from apps.models import Book, Review
 
 
 class CommentForm(forms.Form):
@@ -23,3 +23,7 @@ class BookForm(forms.ModelForm):
             'isbn',
             'quantity',
         ]
+class ReviewCreateForm(ModelForm):
+    class Meta:
+        model = Review
+        fields = ('rating', 'text')
