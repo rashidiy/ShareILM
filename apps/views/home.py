@@ -22,5 +22,7 @@ DeleteView
 """
 
 
-class HomeTemplateView(TemplateView):
+class HomeTemplateView(ListView):
     template_name = 'booksaw/index.html'
+    model = Book
+
