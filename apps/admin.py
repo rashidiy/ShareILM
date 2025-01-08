@@ -48,13 +48,26 @@ class ReviewsAdmin(admin.ModelAdmin):
     search_fields = ('book__title', 'user__username', 'text')
     autocomplete_fields = ('book', 'user')
 
+
 @admin.register(OrderItem)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['book__title', 'order_status', 'quantity']
-    list_filter = ('book__title', )
-    search_fields = 'book__title',
+    list_display = ['get_book_title', 'order_status', 'quantity']
+    list_filter = ['order_status']
+    search_fields = ['book__title']
+
+    def get_book_title(self, obj):
+        return obj.book.title if obj.book else "No Book"
+    get_book_title.short_description = "Book Title"
 
 @admin.register(Cart)
 class CartAdmin(admin.ModelAdmin):
-    list_display = ('user__username', 'cart_status')
-    list_filter = ('user__username', 'cart_status')
+    list_display = ('get_user_username', 'get_cart_status')
+    list_filter = ('status',)
+
+    def get_user_username(self, obj):
+        return obj.user.username
+    get_user_username.short_description = "User"
+
+    def get_cart_status(self, obj):
+        return obj.status
+    get_cart_status.short_description = "Cart Status"

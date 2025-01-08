@@ -1,0 +1,37 @@
+{% extends 'booksaw/base.html' %}
+{% load static %}
+{% block content %}
+    <section id="search-results" class="bookshelf py-5 my-5">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="section-title">Qidiruv Natijalari</h2>
+
+                    {% if book_list %}
+                        <div class="row">
+                            {% for book in book_list %}
+                                <div class="col-md-3">
+                                    <div class="product-item">
+                                        <figure class="product-style">
+                                            <img src="{{ book.book_image.url }}" alt="Books" class="product-item">
+                                            <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                                                Add to Cart
+                                            </button>
+                                        </figure>
+                                        <figcaption>
+                                            <h3>{{ book.title }}</h3>
+                                            <span>{{ book.author }}</span>
+                                            <div class="item-price">$ {{ book.price }}</div>
+                                        </figcaption>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p>Hech qanday kitob topilmadi.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

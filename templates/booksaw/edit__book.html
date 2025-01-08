@@ -1,0 +1,32 @@
+{% extends 'booksaw/base.html' %}
+
+{% block content %}
+<section class="container mt-5">
+    <div class="card shadow-lg p-4">
+        <div class="card-body">
+            <h2 class="card-title text-center mb-4">Edit Book</h2>
+            <form method="post">{% csrf_token %}
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="title" name="title" value="{{ object.title }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="author" class="form-label">Author</label>
+                    <input type="text" class="form-control" id="author" name="author" value="{{ object.author }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="isbn" class="form-label">ISBN</label>
+                    <input type="text" class="form-control" id="isbn" name="isbn" value="{{ object.isbn }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="year" class="form-label">Year</label>
+                    <input type="number" class="form-control" id="year" name="year" value="{{ object.year }}" required>
+                </div>
+                <div class="d-flex justify-content-center mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg px-5">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

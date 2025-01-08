@@ -1,6 +1,5 @@
 {% load static %}
 
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -37,16 +36,16 @@
 						<div class="social-links">
 							<ul>
 								<li>
-									<a href="#"><i class="icon icon-facebook"></i></a>
+									<a href="https://www.facebook.com/?locale=ru_RU"><i class="icon icon-facebook"></i></a>
 								</li>
 								<li>
-									<a href="#"><i class="icon icon-twitter"></i></a>
+									<a href="https://www.twitter.com/?locale=ru_RU"><i class="icon icon-twitter"></i></a>
 								</li>
 								<li>
-									<a href="#"><i class="icon icon-youtube-play"></i></a>
+									<a href="https://www.youtube.com/?locale=ru_RU"><i class="icon icon-youtube-play"></i></a>
 								</li>
 								<li>
-									<a href="#"><i class="icon icon-behance-square"></i></a>
+									<a href="https://www.behance.com/?locale=ru_RU"><i class="icon icon-behance-square"></i></a>
 								</li>
 							</ul>
 						</div><!--social-links-->
@@ -57,8 +56,8 @@
                                 <a href="{% url 'accounts:login' %}" class="user-account for-buy"><i
                                         class="icon icon-user"></i><span>Log In</span></a>
                             {% else %}
-                                <a href="#" class="user-account for-buy"><i
-                                        class="icon icon-user"></i><span>  {{ user.email }}</span></a>
+                                <a href="{% url 'accounts:login' %}" class="user-account for-buy"><i
+                                        class="icon icon-user"></i><span> {{ user.email }}</span></a>
                             {% endif %}
 
 							<a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0
@@ -67,12 +66,12 @@
 							<div class="action-menu">
 
 								<div class="search-bar">
-									<a href="#" class="search-button search-toggle" data-selector="#header-wrap">
-										<i class="icon icon-search"></i>
-									</a>
-									<form role="search" method="get" class="search-box">
+									<a href="#" class="search-button search-toggle" data-selector="#header-wrap" onclick="this.closest('form').submit();">
+                                       <i class="icon icon-search"></i>
+                                    </a>
+									<form action="{% url 'apps:search_books' %}" method="get" class="search-box">
 										<input class="search-field text search-input" placeholder="Search"
-											type="search">
+											type="search" name="q" value="{{ query|default:'' }}">
 									</form>
 								</div>
 							</div>
@@ -90,7 +89,7 @@
 
 					<div class="col-md-2">
 						<div class="main-logo">
-							<a href="index.html"><img src="{% static 'assets/images/main-logo.png' %}" alt="logo"></a>
+							<a href="{% url 'home' %}"><img src="{% static 'assets/images/main-logo.png' %}" alt="logo"></a>
 						</div>
 
 					</div>
@@ -100,20 +99,20 @@
 						<nav id="navbar">
 							<div class="main-menu stellarnav">
 								<ul class="menu-list">
-									<li class="menu-item active"><a href="#home">Home</a></li>
+									<li class="menu-item active"><a href="{% url 'home' %}">Home</a></li>
 									<li class="menu-item has-sub">
 										<a href="#pages" class="nav-link">Pages</a>
 
 										<ul>
-											<li class="active"><a href="index.html">Home</a></li>
-											<li><a href="about.html">About <span class="badge bg-dark">PRO</span></a></li>
-											<li><a href="styles.html">Styles <span class="badge bg-dark">PRO</span></a></li>
-											<li><a href="blog.html">Blog <span class="badge bg-dark">PRO</span></a></li>
-											<li><a href="single-post.html">Post Single <span class="badge bg-dark">PRO</span></a></li>
-											<li><a href="shop.html">Our Store <span class="badge bg-dark">PRO</span></a></li>
-											<li><a href="single-product.html">Product Single <span class="badge bg-dark">PRO</span></a></li>
-											<li><a href="contact.html">Contact <span class="badge bg-dark">PRO</span></a></li>
-											<li><a href="thank-you.html">Thank You <span class="badge bg-dark">PRO</span></a></li>
+											<li class="active"><a href="{% url 'home' %}">Home</a></li>
+											<li><a href="#">About <span class="badge bg-dark">PRO</span></a></li>
+											<li><a href="#">Styles <span class="badge bg-dark">PRO</span></a></li>
+											<li><a href="#">Blog <span class="badge bg-dark">PRO</span></a></li>
+											<li><a href="#">Post Single <span class="badge bg-dark">PRO</span></a></li>
+											<li><a href="#">Product Single <span class="badge bg-dark">PRO</span></a></li>
+											<li><a href="#">Our Store <span class="badge bg-dark">PRO</span></a></li>
+											<li><a href="#">Contact <span class="badge bg-dark">PRO</span></a></li>
+											<li><a href="#">Thank You <span class="badge bg-dark">PRO</span></a></li>
 										</ul>
 
 									</li>
@@ -309,16 +308,16 @@
 								<div class="social-links align-right">
 									<ul>
 										<li>
-											<a href="#"><i class="icon icon-facebook"></i></a>
+											<a href="https://www.facebook.com/?locale=ru_RU"><i class="icon icon-facebook"></i></a>
 										</li>
 										<li>
-											<a href="#"><i class="icon icon-twitter"></i></a>
+											<a href="https://www.twitter.com/?locale=ru_RU"><i class="icon icon-twitter"></i></a>
 										</li>
 										<li>
-											<a href="#"><i class="icon icon-youtube-play"></i></a>
+											<a href="https://www.youtube.com/?locale=ru_RU"><i class="icon icon-youtube-play"></i></a>
 										</li>
 										<li>
-											<a href="#"><i class="icon icon-behance-square"></i></a>
+											<a href="https://www.behance.com/?locale=ru_RU"><i class="icon icon-behance-square"></i></a>
 										</li>
 									</ul>
 								</div>
