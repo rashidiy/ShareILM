@@ -112,4 +112,3 @@ Brauzeringizda quyidagi manzilga kirib, loyihaning ishlayotganligini tekshirishi
 ---
 
 Loyiha bo‘yicha savollar yoki muammolar yuzaga kelsa, muhokama yoki PR (Pull Request) orqali bog‘lanishingiz mumkin.
-
